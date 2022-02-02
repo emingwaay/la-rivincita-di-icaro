@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+    <title>Gioco</title>
+    <script src="phaser.min.js"></script>
+    <style type="text/css">
+            @font-face {
+            font-family: "dalek";
+            font-style: normal;
+            font-weight: 400;
+            src: url("../assets/dalek/DALEK___.ttf");
+        }
+        body {
+            margin: 0;
+            background-color:"0b0b0b";
+        }
+
+        .riquadro{
+        height: 768px;
+        width: 1024px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        background-color:"pink";
+        position: relative;
+        }
+
+        .render{
+        height: 768px;
+        width: 1024px;
+        position: relative;
+        z-index:-1;
+        }
+
+        .bottone{
+            font-family: dalek, sans-serif;
+            font-size: 60px;
+            border: 0px;
+            margin: 20px;
+            top:-460px;
+            background-color:rgba(255, 255, 255, 0);
+            color:white;
+            opacity: 20%;
+            z-index: 2;
+            text-decoration: none;
+        }
+
+        .bottone:hover {
+        opacity: 100%;
+        }
+
+        .bottone:focus {
+        outline: none;
+        }
+
+        #bottone-left{
+        position: relative;
+        float: left;
+        visibility: visible;
+        }
+
+        #bottone-right{
+        position: relative;
+        float: right;
+        visibility: visible;
+        }
+
+        #play {
+          color: white;
+          text-align: right;
+          position: relative;
+          font-family: dalek, sans-serif;
+          font-size: 70px;
+          text-decoration: none;
+          top:-850px;
+          margin-right:350px;
+          float:right;
+          visibility: hidden;
+            }
+
+        #play:hover {
+        color: rgba(255, 255, 255, 0.7);
+        }
+
+        #menu {
+        position: relative;
+        float: left;
+        visibility: visible;
+        }
+
+
+        .sezione{
+        height: 50px;
+        width: 1024px;
+        background-color:"pink";
+        position: relative;
+        z-index: 1;
+        }
+
+        .sezione2{
+        height: 668px;
+        width: 1024px;
+        background-color:"pink";
+        position: relative;
+        z-index: 1;
+        }
+
+
+    </style>
+
+<META HTTP-EQUIV=”Cache-Control” CONTENT=”no-cache”>
+</head>
+<body bgcolor="0b0b0b">
+    <div align="center">
+    <div class="riquadro">
+
+        <img class="render" src="./render/storia1_testo.png">
+        <img class="render" src="./render/storia1.png">
+
+        <img class="render" src="./render/storia2_testo.png">
+        <img class="render" src="./render/storia2.png">
+
+        <img class="render" src="./render/storia3_testo.png">
+        <img class="render" src="./render/storia3.png">
+
+        <img class="render" src="./render/testo4.png">
+        <img class="render" src="./render/scena_4.jpg">
+
+
+        <div class="sezione2" style="z-index: 2">
+        <p> <a class="bottone" id="menu" href="index.html"><</a></p>
+        <button class="bottone" id="bottone-left" onclick="plusDivs(-1)"> < </button>
+        <button class="bottone" id="bottone-right" onclick="plusDivs(+1)"> > </button>
+        </div>
+
+        <div class="sezione">
+						  <a href="gioco.html" id="play">  <img  height="100px" src="../home/giocahome.png"></a>
+        </div>
+
+        </div>
+
+    </div>
+    </div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+    var x = document.getElementsByClassName("render");
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("render");
+
+    if (n > x.length) {slideIndex = 7;}
+    if (n < 1) {slideIndex = 1;}
+
+       //bottone menu
+    if (n == 1){
+    var menu = document.getElementById("menu").style.display = "block";
+   }
+    if (n == 2){
+    var menu = document.getElementById("menu").style.display = "none";
+   }
+
+    //bottone sx
+    if (n == 1){
+    var bottone1 = document.getElementById("bottone-left").style.display = "none";
+   }
+    if (n == 2){
+    var bottone1 = document.getElementById("bottone-left").style.display = "block";
+   }
+
+    //bottone dx
+    if (n == 7){
+    var bottone2 = document.getElementById("bottone-right").style.display = "none";
+   }
+    if (n == 6){
+    var bottone2 = document.getElementById("bottone-right").style.display = "block";
+   }
+
+    //bottone play
+    if (n == 7){
+    var play = document.getElementById("play").style.visibility = "visible";
+   }
+    if (n == 6){
+    var play = document.getElementById("play").style.visibility = "hidden";
+   }
+
+
+
+    for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+
+    x[slideIndex-1].style.display = "block";
+}
+
+
+
+</script>
+
+</body>
+</html>
